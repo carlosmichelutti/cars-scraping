@@ -1,0 +1,17 @@
+[project]
+name = "cars-scraping"
+version = "0.1.0"
+description = "Scrape the Web Scraper car catalog with Playwright."
+readme = "README.md"
+authors = [
+    { name = "Carlos Michelutti", email = "carlos.stz590@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = ["playwright>=1.64,<2"]
+
+[project.scripts]
+cars-scraping = "cars_scraping:main"
+
+[build-system]
+requires = ["uv_build>=0.12.17,<0.13.0"]
+build-backend = "uv_build"
