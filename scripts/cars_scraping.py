@@ -17,6 +17,11 @@ from playwright.sync_api import (
     sync_playwright,
 )
 
+if __package__:
+    from ._logging import configure_logging, log_page_progress, logger
+else:
+    from _logging import configure_logging, log_page_progress, logger
+
 CATALOG_URL = 'https://webscraper.io/test-sites/pagination'
 DATA_DIR = Path(__file__).resolve().parents[1] / 'data'
 
@@ -57,7 +62,7 @@ def launch_chromium(chromium: BrowserType, headless: bool) -> Browser:
         if "Executable doesn't exist at" not in str(exc):
             raise
 
-    print('Installing Chromium for Playwright...', flush=True)
+    logger.info('Installing Chromium for Playwright')
     install_mode = '--only-shell' if headless else '--no-shell'
     try:
         subprocess.run(
@@ -207,13 +212,14 @@ def extract_car(card: Locator) -> Car:
     )
 
 
-def scrape_catalog(page: Page, start_url: str) -> list[Car]:
+def scrape_catalog(page: Page, start_url: str, brand: str | None = None) -> list[Car]:
     """
     Extracts all pages of a general or brand catalog in listing order.
 
     Args:
         page (Page): Playwright page used across the catalog.
         start_url (str): URL of the first catalog page.
+        brand (str | None): Brand being collected, or None for the general catalog.
 
     Returns:
         list[Car]: All listings found by following the next-page links.
@@ -233,6 +239,12 @@ def scrape_catalog(page: Page, start_url: str) -> list[Car]:
         cards = catalog.locator('.test-sites-card').all()
         if not cards:
             raise RuntimeError(f'No vehicles found at {page.url}')
+
+        current_page = catalog.get_attribute('data-current-page')
+        last_page = catalog.get_attribute('data-last-page')
+        page_number = int(current_page) if current_page and current_page.isdecimal() else len(visited)
+        total_pages = int(last_page) if last_page and last_page.isdecimal() else None
+        log_page_progress(brand, page_number, total_pages)
         cars.extend(extract_car(card) for card in cards)
 
         next_links = page.locator('ul.pagination a[rel="next"][href]').all()
@@ -241,7 +253,7 @@ def scrape_catalog(page: Page, start_url: str) -> list[Car]:
             if href:
                 url = urljoin(page.url, href)
                 continue
-        if catalog.get_attribute('data-current-page') != catalog.get_attribute('data-last-page'):
+        if total_pages is not None and page_number != total_pages:
             raise RuntimeError(f'Missing next-page link at {page.url}')
         return cars
 
@@ -323,6 +335,16 @@ def main() -> int:
         SystemExit: When help is requested or the command-line arguments are invalid.
     """
     args = parse_args()
+    configure_logging()
+    logger.info(
+        'Starting extraction in %s mode. Browser is %s (headless=%s)',
+        args.extraction_mode,
+        'hidden' if args.headless else 'visible',
+        args.headless
+    )
+    if args.extraction_mode == 'brands' and args.brand is None:
+        logger.info('Collecting all brands from the catalog')
+
     try:
         with sync_playwright() as playwright:
             browser = launch_chromium(playwright.chromium, args.headless)
@@ -333,14 +355,17 @@ def main() -> int:
                     catalogs = discover_brands(page, CATALOG_URL, args.brand)
 
                 for name, url in catalogs.items():
-                    cars = scrape_catalog(page, url)
+                    brand = name if args.extraction_mode == 'brands' else None
+                    if brand is not None:
+                        logger.info('Collecting brand %s', brand)
+                    cars = scrape_catalog(page, url, brand)
                     destination = DATA_DIR / f'{name}.csv'
                     write_csv(cars, destination)
-                    print(f'Exported {len(cars)} vehicles to {destination}')
+                    logger.info('Exported %d vehicles to %s', len(cars), destination)
             finally:
                 browser.close()
     except (Error, OSError, RuntimeError, ValueError) as exc:
-        print(f'Extraction failed. {exc}', file=sys.stderr)
+        logger.error('Extraction failed. %s', exc)
         return 1
     return 0
 
