@@ -1,0 +1,17 @@
+﻿name,description,year,country_of_origin,mileage_km,status,available_quantity,price_usd,rating
+BMW E24 635CSi 1954,Shark-nose grand tourer,1954,Germany,189886,Reserved,,18457,3
+BMW 2002 1978,"Concours 2002, five-speed",1978,Italy,181589,Reserved,,336315,5
+BMW E28 535i 1970,"E28 535i, restored",1970,Japan,73208,Available,3,126154,5
+BMW E30 M3 1975,"Homologation M3, Concours",1975,Italy,186306,Available,2,347873,1
+BMW E28 535i 1968,"E28 535i, driver condition",1968,United Kingdom,44686,Sold,,349488,3
+BMW E28 535i 1978,"E28 535i, project condition",1978,Italy,77472,Available,1,258187,1
+BMW E28 535i 1979,"E28 535i, project condition",1979,Japan,94772,Available,3,346703,2
+BMW E28 535i 1974,"E28 535i, driver condition",1974,Germany,155295,Sold,,109962,5
+BMW E30 M3 1982,"E30 M3, project condition condition",1982,United States,222858,Available,3,178474,1
+BMW E30 M3 1979,"E30 M3, driver condition",1979,United States,39638,Reserved,,266205,5
+BMW E30 M3 1962,"E30 M3, Concours",1962,United Kingdom,82600,Reserved,,38102,2
+BMW 2002 1970,"BMW 2002, restored",1970,Japan,137568,Reserved,,220508,4
+BMW E24 635CSi 1985,"E24 635CSi, restored",1985,Italy,45883,Sold,,88474,5
+BMW E28 535i 1959,"E28 535i, low mileage",1959,United States,32163,Sold,,245217,5
+BMW 2002 1974,"BMW 2002, restored",1974,United States,203903,Reserved,,58380,4
+BMW E30 M3 1989,"E30 M3, late production",1989,Italy,226990,Available,2,258239,1

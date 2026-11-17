@@ -1,0 +1,14 @@
+﻿name,description,year,country_of_origin,mileage_km,status,available_quantity,price_usd,rating
+Ferrari F40 1984,Raw Prancing Horse icon,1984,Italy,141828,Reserved,,277672,1
+Ferrari 308 GTS 1970,"Pininfarina Targa, restored",1970,Japan,213735,Available,5,153699,4
+Ferrari F40 1953,"F40, driver condition",1953,Germany,130205,Available,4,44553,2
+Ferrari 250 GT 1959,"250 GT coupe, Concours",1959,Italy,115751,Reserved,,290422,1
+Ferrari F40 1951,"F40 Concours, factory spec",1951,United Kingdom,156165,Sold,,209858,3
+Ferrari 250 GT 1969,"250 GT coupe, Concours",1969,Germany,102304,Sold,,115563,5
+Ferrari F40 1959,"F40 in yellow, driver",1959,United Kingdom,82731,Reserved,,302521,2
+Ferrari 308 GTS 1959,"308 GTS Targa, Concours",1959,United Kingdom,137225,Sold,,329084,3
+Ferrari F40 1971,"F40 Concours, silver",1971,Italy,140508,Reserved,,304752,2
+Ferrari 250 GT 1956,"250 GT convertible, Concours",1956,United Kingdom,129563,Sold,,336014,5
+Ferrari F40 1978,"F40 project, high power",1978,United Kingdom,202743,Sold,,98263,1
+Ferrari 250 GT 1952,"250 GT coupe, restored",1952,Germany,135513,Available,4,205986,3
+Ferrari 250 GT 1950,"250 GT, early production",1950,Japan,110957,Reserved,,228180,2

@@ -1,0 +1,14 @@
+﻿name,description,year,country_of_origin,mileage_km,status,available_quantity,price_usd,rating
+Porsche 911 Carrera 1980,"Air-cooled Carrera, driver",1980,Germany,73759,Available,3,273100,4
+Porsche 928 S4 1973,"Transaxle grand tourer, Concours",1973,United Kingdom,167070,Available,4,130792,5
+Porsche 944 Turbo 1956,Turbocharged transaxle coupe,1956,United States,131662,Sold,,81049,1
+Porsche 944 Turbo 1952,Turbocharged transaxle driver,1952,United Kingdom,106892,Sold,,330964,3
+Porsche 911 Carrera 1953,"Early Carrera, restored",1953,Germany,203308,Available,4,303295,2
+Porsche 944 Turbo 1982,"944 Turbo, driver condition",1982,United Kingdom,130019,Available,3,17747,4
+Porsche 944 Turbo 1977,"944 Turbo, project condition",1977,United Kingdom,77140,Reserved,,105199,1
+Porsche 911 Carrera 1981,"911 Carrera, driver",1981,Japan,203484,Sold,,77234,1
+Porsche 911 Carrera 1965,"Early 911, project condition",1965,United Kingdom,115053,Available,3,293234,2
+Porsche 911 Carrera 1962,"911 Carrera, project condition",1962,United States,174886,Sold,,168221,2
+Porsche 356 1973,"Porsche 356, project condition",1973,Germany,70725,Available,5,188422,5
+Porsche 928 S4 1971,"928 S4, project condition",1971,Germany,233990,Available,2,212637,2
+Porsche 911 Carrera 1957,"911 Carrera, low mileage",1957,United Kingdom,24400,Available,5,221588,5
