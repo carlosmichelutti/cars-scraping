@@ -7,4 +7,7 @@ authors = [
     { name = "Carlos Michelutti", email = "carlos.stz590@gmail.com" }
 ]
 requires-python = ">=3.13"
-dependencies = ["playwright>=1.64,<2"]
+dependencies = [
+    "pandas>=3.1.1",
+    "playwright>=1.64,<2",
+]
